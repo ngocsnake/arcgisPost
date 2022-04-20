@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.3.2/markdown-it.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Code cùng devNgọc</title>
+</head>
+
+<body>
+    <div class="app">
+        <div id="md"></div>
+        <div id="steps">
+        </div>
+        <br>
+        <h2>4: Kiểm tra kết quả bằng ArcCatalog:</h2>
+        <img src="./img/result.png" alt="result">
+
+        <br>
+        <center><i class="fad fa-check-circle" style="color: rgb(21, 169, 43); font-size: 20px;"></i></center>
+        <br>
+    </div>
+    <script type="module">
+        import { steps, copyToClipboard } from './lib.js'
+
+        async function App() {
+            const md = window.markdownit();
+            const mrkd = await fetch('./ex.md').then(data => data.text())
+            document.getElementById("md").innerHTML = md.render(mrkd);
+
+            const stepsHtmls = steps.map(e => (
+                `<div>
+                    <div class="title"><b>${e.title}</b></div>
+
+                    <div class="highlight"><pre class="highlight javascript"><code>${e.code}</code></pre></div>
+                </div>`
+            ))
+
+
+            document.getElementById("steps").innerHTML = stepsHtmls.join('');
+
+           
+
+            function handleCopyClick(evt) {
+                const { children } = evt.target.parentElement;
+                const { innerText } = Array.from(children)[0];
+
+                copyToClipboard(innerText);
+            }
+
+            const highlights = document.querySelectorAll("div.highlight");
+            highlights.forEach((div) => {
+                const copy = document.createElement("button");
+                copy.innerHTML = "Copy";
+                copy.addEventListener("click", handleCopyClick);
+                div.append(copy);
+            });
+        }
+        App();
+    </script>
+</body>
+
+</html>
