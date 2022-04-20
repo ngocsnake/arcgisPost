@@ -50,6 +50,7 @@
                 const { innerText } = Array.from(children)[0];
 
                 copyToClipboard(innerText);
+                event.target.innerHTML = 'Đã Copy';
             }
 
             const highlights = document.querySelectorAll("div.highlight");
