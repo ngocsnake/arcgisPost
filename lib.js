@@ -17,7 +17,7 @@ export const steps = [
     },
     {
         title: '5. Tạo FeatureClass Điểm Cơ Sở Lãnh Hải',
-        code: "arcpy.CreateFeatureclass_management('C:\Output\Database.gdb\BienGioiDiaGioi','DiemCoSoLanhHai','POINT')"
+        code: "arcpy.CreateFeatureclass_management('C:\\Output\\Database.gdb\\BienGioiDiaGioi','DiemCoSoLanhHai','POINT')"
     },
     {
         title: '6. Tạo FeatureClass Vùng Biên (Vùng Biển 🤔)',
@@ -69,7 +69,7 @@ export const steps = [
     ,
     {
         title: '',
-        code: `arcpy.AddCodedValueToDomain_management('C:\Output\Database.gdb',"DoiTuongVungBien",'AE02','Lanh hai')`
+        code: `arcpy.AddCodedValueToDomain_management('C:\\Output\\Database.gdb',"DoiTuongVungBien",'AE02','Lanh hai')`
     }
     ,
     {
